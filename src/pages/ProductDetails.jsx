@@ -73,7 +73,7 @@ export const ProductDetails = () => {
 
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
                 {/* Product Image Section */}
-                <div className="sticky top-24 h-fit flex flex-col gap-6">
+                <div className="relative md:sticky md:top-24 h-fit flex flex-col gap-6">
                     {/* Main Image */}
                     <div className="bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm w-full">
                         <img

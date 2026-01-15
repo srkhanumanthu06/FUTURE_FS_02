@@ -117,25 +117,71 @@ export const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="lg:hidden bg-surface border-b border-gray-100 shadow-xl">
-                    <div className="px-4 pt-2 pb-6 space-y-2">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className="block text-text font-medium hover:text-primary py-3 px-2 border-b border-gray-50"
-                                onClick={() => setIsOpen(false)}
+                <div className="lg:hidden bg-surface border-b border-gray-100 shadow-xl max-h-[80vh] overflow-y-auto">
+                    <div className="px-4 pt-4 pb-6 space-y-4">
+                        {/* Mobile Search Bar */}
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            const query = e.target.search.value.trim();
+                            if (query) {
+                                navigate(`/shop?search=${encodeURIComponent(query)}`);
+                                setIsOpen(false);
+                            }
+                        }} className="relative">
+                            <input
+                                name="search"
+                                type="text"
+                                placeholder="Search products..."
+                                className="w-full bg-gray-50 border border-transparent focus:bg-white focus:border-primary/20 transition-all rounded-lg py-2.5 px-4 pl-10 text-sm outline-none text-text"
+                            />
+                            <button type="submit" className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">
+                                <Search size={18} />
+                            </button>
+                        </form>
+
+                        {/* Navigation Links */}
+                        <div className="space-y-1">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    className="block text-text font-medium hover:text-primary py-3 px-2 border-b border-gray-50 last:border-0"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="grid grid-cols-2 gap-3 pt-2">
+                            <button
+                                onClick={() => { setIsCartOpen(true); setIsOpen(false); }}
+                                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-gray-50 rounded-lg text-sm font-medium text-text hover:bg-gray-100"
                             >
-                                {link.name}
+                                <ShoppingBag size={18} />
+                                <span>Cart ({cartCount})</span>
+                            </button>
+                            <Link
+                                to="/wishlist"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center justify-center gap-2 py-2.5 px-4 bg-gray-50 rounded-lg text-sm font-medium text-text hover:bg-gray-100"
+                            >
+                                <User size={18} />
+                                <span>Wishlist</span>
                             </Link>
-                        ))}
-                        <button
-                            onClick={() => { setIsCartOpen(true); setIsOpen(false); }}
-                            className="flex w-full items-center space-x-4 py-3 px-2"
-                        >
-                            <ShoppingBag size={20} className="text-text" />
-                            <span className="text-text font-medium">Cart ({cartCount})</span>
-                        </button>
+                        </div>
+
+                        {/* Mobile Account Section */}
+                        <div className="pt-2 border-t border-gray-100">
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-xs font-bold text-text-muted uppercase tracking-wider">My Account</span>
+                            </div>
+                            <Link to="/orders" onClick={() => setIsOpen(false)} className="block py-2 text-sm text-text hover:text-primary">My Orders</Link>
+                            <Link to="/login" onClick={() => setIsOpen(false)} className="block mt-3">
+                                <Button className="w-full justify-center">Log In / Sign Up</Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             )}
