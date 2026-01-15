@@ -13,12 +13,12 @@ A modern, responsive e-commerce web application built with **React**, **Vite**, 
 
 ## 🛠️ Technology Stack
 
-*   **Frontend Library**: [React](https://react.dev/)
-*   **Build Tool**: [Vite](https://vitejs.dev/)
-*   **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
-*   **Routing**: [React Router DOM](https://reactrouter.com/)
-*   **Icons**: [Lucide React](https://lucide.dev/)
-*   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+*   **Frontend Library**: [React]
+*   **Build Tool**: [Vite]
+*   **Styling**: [Tailwind CSS 4.0]
+*   **Routing**: [React Router DOM]
+*   **Icons**: [Lucide React]
+*   **Animations**: [Framer Motion]
 
 ## 📂 Project Structure
 
@@ -76,8 +76,3 @@ To create a production-ready build:
 npm run build
 ```
 
-This will generate the optimized files in the `dist` directory.
-
----
-
-*Verified by [srkhanumanthu06](https://github.com/srkhanumanthu06)*
